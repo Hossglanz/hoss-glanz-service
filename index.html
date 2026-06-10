@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hoss Glanz Service — Gebäudereinigung in Groß-Zimmern &amp; Region Darmstadt-Dieburg</title>
+<meta name="description" content="Professionelle Büro-, Praxis-, Treppenhaus-, Fenster- und Grundreinigung sowie Hausmeisterservice in Groß-Zimmern und der Region Darmstadt-Dieburg. Zuverlässig, flexibel, kurzfristig verfügbar." />
+<meta name="theme-color" content="#ffffff" />
+<style>
+  :root{
+    --black:#1d1d1f;
+    --grey-text:#6e6e73;
+    --grey-bg:#f5f5f7;
+    --line:#d2d2d7;
+    --blue:#0071e3;
+    --blue-dark:#0060c0;
+    --white:#ffffff;
+    --radius:18px;
+    --maxw:1080px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Inter",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:68px;}
+  body{
+    font-family:var(--font);
+    color:var(--black);
+    background:var(--white);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  section{padding:96px 0;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.72);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.07);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .brand{font-weight:600;font-size:18px;letter-spacing:-.01em;}
+  .brand span{color:var(--blue);}
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-links a{font-size:14px;color:var(--grey-text);transition:color .2s;}
+  .nav-links a:hover{color:var(--black);}
+  .nav-links a.nav-cta{
+    background:var(--blue);color:#fff;padding:7px 16px;border-radius:980px;
+    font-size:14px;font-weight:500;transition:background .2s;
+  }
+  .nav-links a.nav-cta:hover{background:var(--blue-dark);color:#fff;}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;}
+  .burger span{display:block;width:22px;height:1.6px;background:var(--black);margin:5px 0;transition:transform .3s ease,opacity .2s ease;}
+  .burger.active span:nth-child(1){transform:translateY(6.6px) rotate(45deg);}
+  .burger.active span:nth-child(2){opacity:0;}
+  .burger.active span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg);}
+  .mobile-menu{display:none;flex-direction:column;gap:4px;padding:10px 0 18px;border-bottom:1px solid var(--line);}
+  .mobile-menu a{padding:11px 4px;font-size:17px;border-bottom:1px solid rgba(0,0,0,.05);}
+  .mobile-menu a:last-child{border:0;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:120px 0 100px;text-align:center;
+    background:radial-gradient(120% 90% at 50% 0%,#fbfdff 0%,#ffffff 55%,#f5f5f7 100%);
+  }
+  .eyebrow{
+    display:inline-block;font-size:14px;font-weight:600;color:var(--blue);
+    letter-spacing:.02em;margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(38px,6vw,68px);line-height:1.05;letter-spacing:-.025em;
+    font-weight:600;max-width:14ch;margin:0 auto 22px;
+  }
+  .hero .lead{
+    font-size:clamp(18px,2.4vw,23px);color:var(--grey-text);
+    max-width:46ch;margin:0 auto 34px;font-weight:400;
+  }
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--blue);color:#fff;padding:13px 28px;border-radius:980px;
+    font-size:16px;font-weight:500;transition:background .2s,transform .1s;
+  }
+  .btn-primary:hover{background:var(--blue-dark);color:#fff;}
+  .btn-primary:active{transform:scale(.98);}
+  .btn-ghost{
+    padding:13px 26px;border-radius:980px;font-size:16px;font-weight:500;
+    color:var(--blue);border:1px solid var(--line);transition:border-color .2s,background .2s;
+  }
+  .btn-ghost:hover{border-color:var(--blue);background:rgba(0,113,227,.04);color:var(--blue);}
+  .hero-meta{
+    margin-top:40px;display:flex;gap:34px;justify-content:center;flex-wrap:wrap;
+    font-size:14px;color:var(--grey-text);
+  }
+  .hero-meta b{color:var(--black);font-weight:600;}
+
+  /* ---------- SECTION HEADINGS ---------- */
+  .head{text-align:center;margin-bottom:58px;}
+  .head .tag{font-size:14px;font-weight:600;color:var(--blue);display:block;margin-bottom:12px;}
+  .head h2{font-size:clamp(30px,4.4vw,44px);letter-spacing:-.02em;font-weight:600;max-width:18ch;margin:0 auto;}
+  .head p{font-size:18px;color:var(--grey-text);max-width:50ch;margin:16px auto 0;}
+
+  /* ---------- LEISTUNGEN ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .card{
+    background:var(--grey-bg);border-radius:var(--radius);padding:34px 28px;
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.08);}
+  .card .ico{
+    width:46px;height:46px;border-radius:12px;background:#fff;display:flex;
+    align-items:center;justify-content:center;margin-bottom:20px;
+    box-shadow:0 1px 3px rgba(0,0,0,.08);
+  }
+  .card .ico svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.7;}
+  .card h3{font-size:21px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px;}
+  .card p{font-size:15px;color:var(--grey-text);line-height:1.55;}
+
+  /* ---------- WARUM WIR ---------- */
+  .why{background:var(--black);color:#fff;}
+  .why .head h2{color:#fff;}
+  .why .head .tag{color:#5ea0ff;}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .why-item{padding:26px 22px;border-radius:var(--radius);background:rgba(255,255,255,.06);}
+  .why-item .n{font-size:34px;font-weight:600;color:#5ea0ff;letter-spacing:-.02em;}
+  .why-item h4{font-size:17px;font-weight:600;margin:8px 0 6px;}
+  .why-item p{font-size:14px;color:#a1a1a6;line-height:1.5;}
+
+  /* ---------- VORGEHEN ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .step{position:relative;padding-top:18px;}
+  .step .num{
+    font-size:14px;font-weight:700;color:var(--blue);letter-spacing:.05em;
+    border-top:2px solid var(--blue);padding-top:16px;display:inline-block;
+  }
+  .step h4{font-size:19px;font-weight:600;margin:14px 0 8px;letter-spacing:-.01em;}
+  .step p{font-size:15px;color:var(--grey-text);line-height:1.55;}
+
+  /* ---------- HIGHLIGHT BANNER ---------- */
+  .banner{
+    background:linear-gradient(135deg,#0071e3 0%,#0a84ff 100%);
+    color:#fff;border-radius:28px;padding:60px 40px;text-align:center;margin:0 22px;
+  }
+  .banner-inner{max-width:var(--maxw);margin:0 auto;}
+  .banner h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;font-weight:600;margin-bottom:14px;}
+  .banner p{font-size:18px;color:rgba(255,255,255,.9);max-width:46ch;margin:0 auto 30px;}
+  .banner .btn-white{
+    background:#fff;color:var(--blue);padding:13px 30px;border-radius:980px;
+    font-size:16px;font-weight:600;display:inline-block;transition:transform .1s;
+  }
+  .banner .btn-white:hover{transform:scale(1.03);color:var(--blue);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:780px;margin:0 auto;border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;background:none;border:0;cursor:pointer;text-align:left;
+    padding:24px 4px;display:flex;justify-content:space-between;align-items:center;gap:20px;
+    font-size:19px;font-weight:500;color:var(--black);font-family:inherit;letter-spacing:-.01em;
+  }
+  .faq-q .plus{font-size:24px;color:var(--blue);transition:transform .3s;flex-shrink:0;line-height:1;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-a p{padding:0 4px 26px;font-size:16px;color:var(--grey-text);line-height:1.6;max-width:64ch;}
+
+  /* ---------- KONTAKT ---------- */
+  .contact{background:var(--grey-bg);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start;}
+  .contact-info h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;font-weight:600;margin-bottom:18px;}
+  .contact-info p.sub{font-size:18px;color:var(--grey-text);margin-bottom:30px;max-width:40ch;}
+  .info-row{display:flex;gap:14px;align-items:center;margin-bottom:18px;font-size:16px;}
+  .info-row svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:1.7;flex-shrink:0;}
+  .info-row a{font-weight:500;}
+  .form-box{background:#fff;border-radius:var(--radius);padding:34px;box-shadow:0 10px 40px rgba(0,0,0,.06);}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:14px;font-weight:500;margin-bottom:7px;}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;
+    font-size:16px;font-family:inherit;background:#fff;color:var(--black);transition:border-color .2s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.12);}
+  .field textarea{resize:vertical;min-height:110px;}
+  .form-box .btn-primary{width:100%;text-align:center;border:0;cursor:pointer;font-family:inherit;}
+  .req{color:var(--blue);}
+  .field input.invalid,.field textarea.invalid{border-color:#d62b2b;box-shadow:0 0 0 3px rgba(214,43,43,.10);}
+  .form-status{font-size:14px;margin-top:14px;text-align:center;min-height:1px;}
+  .form-status.error{color:#d62b2b;}
+  .form-status.ok{color:#1a7f37;}
+  .form-note{font-size:13px;color:var(--grey-text);margin-top:10px;text-align:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#fff;border-top:1px solid var(--line);padding:48px 0 40px;}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;}
+  .foot-brand{font-weight:600;font-size:18px;}
+  .foot-brand span{color:var(--blue);}
+  .foot-brand p{font-size:14px;color:var(--grey-text);font-weight:400;margin-top:8px;max-width:30ch;}
+  .foot-links{display:flex;gap:26px;font-size:14px;color:var(--grey-text);flex-wrap:wrap;}
+  .foot-links a{cursor:pointer;transition:color .2s;}
+  .foot-links a:hover{color:var(--black);}
+  .foot-bottom{margin-top:36px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--grey-text);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  /* ---------- MODAL ---------- */
+  .modal-overlay{
+    display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.45);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    align-items:flex-start;justify-content:center;padding:40px 18px;overflow-y:auto;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:#fff;border-radius:22px;max-width:760px;width:100%;padding:44px 40px;
+    position:relative;box-shadow:0 30px 80px rgba(0,0,0,.25);
+  }
+  .modal-close{
+    position:absolute;top:20px;right:20px;width:34px;height:34px;border-radius:50%;
+    background:var(--grey-bg);border:0;cursor:pointer;font-size:18px;color:var(--black);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .modal h3{font-size:28px;font-weight:600;letter-spacing:-.02em;margin-bottom:20px;}
+  .modal h4{font-size:16px;font-weight:600;margin:22px 0 6px;}
+  .modal p{font-size:15px;color:#3a3a3c;line-height:1.6;margin-bottom:10px;}
+  .modal a{color:var(--blue);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:880px){
+    .grid,.why-grid,.steps{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;gap:40px;}
+  }
+  @media (max-width:680px){
+    section{padding:72px 0;}
+    .nav-links{display:none;}
+    .burger{display:block;}
+    .grid,.why-grid,.steps{grid-template-columns:1fr;}
+    .hero{padding:88px 0 72px;}
+    .banner{padding:46px 26px;border-radius:22px;}
+    .modal{padding:34px 24px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto !important;transition:none !important;animation:none !important;}
+  }
+  :focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:6px;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">Hoss <span>Glanz</span> Service</a>
+    <div class="nav-links">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#warum">Warum wir</a>
+      <a href="#vorgehen">Vorgehen</a>
+      <a href="#fragen">Fragen</a>
+      <a href="#kontakt" class="nav-cta">Angebot anfragen</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="wrap"><div class="mobile-menu" id="mobileMenu">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#warum">Warum wir</a>
+    <a href="#vorgehen">Vorgehen</a>
+    <a href="#fragen">Fragen</a>
+    <a href="#kontakt">Angebot anfragen</a>
+  </div></div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">Gebäudereinigung · Groß-Zimmern &amp; Region Darmstadt-Dieburg</span>
+    <h1>Saubere Räume, ganz ohne Aufwand für Sie.</h1>
+    <p class="lead">Professionelle Reinigung für Büros, Praxen, Treppenhäuser und Fenster – zuverlässig, gründlich und kurzfristig verfügbar. Sie sagen, was sauber sein soll. Wir kümmern uns um den Rest.</p>
+    <div class="hero-cta">
+      <a href="#kontakt" class="btn-primary">Kostenloses Angebot anfragen</a>
+      <a href="tel:+491728942681" class="btn-ghost">0172 8942681 anrufen</a>
+    </div>
+    <div class="hero-meta">
+      <span><b>Kurzfristig</b> verfügbar</span>
+      <span><b>Feste</b> Ansprechpartner</span>
+      <span><b>Regelmäßig</b> oder einmalig</span>
+    </div>
+  </div>
+</header>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Leistungen</span>
+      <h2>Alles, was sauber bleiben soll.</h2>
+      <p>Vom täglichen Büro bis zur einmaligen Grundreinigung – wählen Sie, was Sie brauchen. Eine kurze Anfrage genügt.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M14 9h5a1 1 0 0 1 1 1v11"/><path d="M3 21h18"/><path d="M8 8h2M8 12h2M8 16h2"/></svg></div>
+        <h3>Büroreinigung</h3>
+        <p>Regelmäßige Unterhaltsreinigung für Büros und Gewerbe – Böden, Sanitär, Küche und Arbeitsplätze. Diskret, außerhalb Ihrer Geschäftszeiten möglich.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M12 9v6M9 12h6"/></svg></div>
+        <h3>Praxisreinigung</h3>
+        <p>Hygienische Reinigung für Arzt-, Zahnarzt- und Therapiepraxen. Mit dem nötigen Feingefühl für sensible Bereiche und feste Abläufe.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20v-3h4v-3h4v-3h4V8h4"/><path d="M4 20h4"/></svg></div>
+        <h3>Treppenhausreinigung</h3>
+        <p>Saubere Eingänge und Treppenhäuser für Mehrfamilienhäuser und Hausverwaltungen. Im festen Turnus, zuverlässig und gepflegt.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M4 12h16M12 3v18"/></svg></div>
+        <h3>Fensterreinigung</h3>
+        <p>Streifenfreie Fenster, Rahmen und Glasflächen – innen und außen. Für klare Aussichten in Büro, Praxis und Wohngebäude.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3l1.6 4L17 8.5 12.6 10 11 14l-1.6-4L5 8.5 9.4 7 11 3z"/><path d="M18 13.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8.8-2z"/></svg></div>
+        <h3>Grundreinigung</h3>
+        <p>Die intensive Reinigung von Grund auf – nach Umbau, vor Einzug oder zur Auffrischung. Einmalig gebucht, sichtbar gründlich.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Hausmeisterservice</h3>
+        <p>Kleine Reparaturen, Pflege der Außenanlagen, Winterdienst und mehr. Ein verlässlicher Partner rund ums Objekt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WARUM WIR -->
+<section class="why" id="warum">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Warum wir</span>
+      <h2>Reinigung, auf die Sie sich verlassen können.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><div class="n">01</div><h4>Zuverlässig</h4><p>Vereinbarte Termine werden eingehalten – pünktlich und ohne ständig wechselnde Gesichter.</p></div>
+      <div class="why-item"><div class="n">02</div><h4>Gründlich</h4><p>Wir arbeiten nach festen Checklisten, damit kein Bereich übersehen wird.</p></div>
+      <div class="why-item"><div class="n">03</div><h4>Flexibel</h4><p>Regelmäßig oder einmalig, tagsüber oder abends – wir passen uns Ihrem Ablauf an.</p></div>
+      <div class="why-item"><div class="n">04</div><h4>Persönlich</h4><p>Ein fester Ansprechpartner für alle Fragen. Kurze Wege, schnelle Antworten.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VORGEHEN -->
+<section id="vorgehen">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Vorgehen</span>
+      <h2>In vier Schritten zum sauberen Objekt.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="num">SCHRITT 1</span><h4>Anfrage</h4><p>Sie schildern uns kurz, was gereinigt werden soll – per Formular, Telefon oder WhatsApp.</p></div>
+      <div class="step"><span class="num">SCHRITT 2</span><h4>Besichtigung</h4><p>Wir schauen uns das Objekt an und beraten Sie zum passenden Umfang und Turnus.</p></div>
+      <div class="step"><span class="num">SCHRITT 3</span><h4>Angebot</h4><p>Sie erhalten ein klares, faires Angebot ohne versteckte Kosten.</p></div>
+      <div class="step"><span class="num">SCHRITT 4</span><h4>Reinigung</h4><p>Wir legen los – zuverlässig, gründlich und auf Wunsch im festen Turnus.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER -->
+<div class="banner">
+  <div class="banner-inner">
+    <h2>Bereit für sauberere Räume?</h2>
+    <p>Fordern Sie jetzt unverbindlich Ihr kostenloses Angebot an. Wir melden uns schnell bei Ihnen zurück.</p>
+    <a href="#kontakt" class="btn-white">Angebot anfragen</a>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section id="fragen">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Fragen</span>
+      <h2>Häufige Fragen</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">In welchem Gebiet sind Sie tätig?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Wir reinigen in Groß-Zimmern und der gesamten Region Darmstadt-Dieburg. Sprechen Sie uns gern an, wenn Ihr Objekt in der Nähe liegt – wir finden eine Lösung.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Reinigen Sie regelmäßig oder auch einmalig?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Beides. Wir übernehmen die regelmäßige Unterhaltsreinigung im festen Turnus genauso wie einmalige Grund- oder Bauschlussreinigungen.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Können Sie außerhalb der Geschäftszeiten reinigen?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Ja. Gerade für Büros und Praxen arbeiten wir auf Wunsch früh morgens, abends oder am Wochenende, damit Ihr Betrieb ungestört bleibt.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Wie schnell bekomme ich ein Angebot?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Nach Ihrer Anfrage melden wir uns kurzfristig, vereinbaren bei Bedarf eine Besichtigung und erstellen Ihnen ein klares Angebot ohne versteckte Kosten.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Bringen Sie Material und Geräte mit?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Ja, wir bringen professionelle Reinigungsmittel und Ausrüstung mit. Auf besondere Anforderungen Ihres Objekts gehen wir selbstverständlich ein.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact" id="kontakt">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <h2>Lassen Sie uns sprechen.</h2>
+      <p class="sub">Schreiben Sie uns kurz, was gereinigt werden soll. Wir melden uns schnell mit einem unverbindlichen Angebot.</p>
+      <div class="info-row"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.9z"/></svg><a href="tel:+491728942681">0172 8942681</a></div>
+      <div class="info-row"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg><a href="mailto:info@hossglanzservice.de">info@hossglanzservice.de</a></div>
+      <div class="info-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Wilhelm-Leuschner-Stra%C3%9Fe+31%2C+64846+Gro%C3%9F-Zimmern" target="_blank" rel="noopener">Wilhelm-Leuschner-Straße 31, 64846 Groß-Zimmern</a></div>
+      <div class="info-row"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-4-1L3 20l1.1-5a8.4 8.4 0 0 1-1-4A8.4 8.4 0 0 1 11.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg><a href="https://wa.me/491728942681" target="_blank" rel="noopener">Per WhatsApp schreiben</a></div>
+    </div>
+    <div class="form-box">
+      <div class="field"><label for="name">Name <span class="req">*</span></label><input type="text" id="name" placeholder="Ihr Name" autocomplete="name" /></div>
+      <div class="field"><label for="phone">Telefon</label><input type="tel" id="phone" placeholder="Für einen schnellen Rückruf" autocomplete="tel" /></div>
+      <div class="field"><label for="email">E-Mail <span class="req">*</span></label><input type="email" id="email" placeholder="ihre@email.de" autocomplete="email" /></div>
+      <div class="field"><label for="leistung">Gewünschte Leistung</label>
+        <select id="leistung">
+          <option value="">Bitte wählen …</option>
+          <option>Büroreinigung</option>
+          <option>Praxisreinigung</option>
+          <option>Treppenhausreinigung</option>
+          <option>Fensterreinigung</option>
+          <option>Grundreinigung</option>
+          <option>Hausmeisterservice</option>
+          <option>Sonstiges / Beratung</option>
+        </select>
+      </div>
+      <div class="field"><label for="msg">Nachricht <span class="req">*</span></label><textarea id="msg" placeholder="Was sollen wir für Sie reinigen?"></textarea></div>
+      <button class="btn-primary" id="sendBtn">Anfrage senden</button>
+      <p class="form-status" id="formStatus" role="alert" aria-live="polite"></p>
+      <p class="form-note">Ihre Anfrage öffnet Ihr E-Mail-Programm mit den Angaben – ganz ohne Datenübertragung an Dritte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Hoss <span>Glanz</span> Service</div>
+        <p>Professionelle Gebäudereinigung in Groß-Zimmern und der Region Darmstadt-Dieburg.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#kontakt">Kontakt</a>
+        <a id="openImpressum" role="button" tabindex="0">Impressum</a>
+        <a id="openDatenschutz" role="button" tabindex="0">Datenschutz</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Hoss Glanz Service · Hossein Atai</span>
+      <span>Wilhelm-Leuschner-Straße 31 · 64846 Groß-Zimmern</span>
+    </div>
+  </div>
+</footer>
+
+<!-- IMPRESSUM MODAL -->
+<div class="modal-overlay" id="impressumModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="impressumTitle">
+    <button class="modal-close" data-close aria-label="Schließen">✕</button>
+    <h3 id="impressumTitle">Impressum</h3>
+    <h4>Angaben gemäß § 5 TMG</h4>
+    <p>Hossein Atai<br/>Hoss Glanz Service<br/>Wilhelm-Leuschner-Straße 31<br/>64846 Groß-Zimmern</p>
+    <h4>Kontakt</h4>
+    <p>Telefon: <a href="tel:+491728942681">0172 8942681</a><br/>E-Mail: <a href="mailto:info@hossglanzservice.de">info@hossglanzservice.de</a></p>
+    <h4>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h4>
+    <p>Hossein Atai, Anschrift wie oben.</p>
+    <h4>Streitschlichtung</h4>
+    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>. Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  </div>
+</div>
+
+<!-- DATENSCHUTZ MODAL -->
+<div class="modal-overlay" id="datenschutzModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="datenschutzTitle">
+    <button class="modal-close" data-close aria-label="Schließen">✕</button>
+    <h3 id="datenschutzTitle">Datenschutzerklärung</h3>
+    <h4>Verantwortlicher</h4>
+    <p>Hossein Atai, Hoss Glanz Service, Wilhelm-Leuschner-Straße 31, 64846 Groß-Zimmern. E-Mail: <a href="mailto:info@hossglanzservice.de">info@hossglanzservice.de</a></p>
+    <h4>Allgemeines</h4>
+    <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir verarbeiten Ihre Daten ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, BDSG).</p>
+    <h4>Kontaktaufnahme</h4>
+    <p>Das Kontaktformular auf dieser Website überträgt keine Daten an einen Server. Beim Absenden öffnet sich Ihr eigenes E-Mail-Programm mit den von Ihnen eingegebenen Angaben. Erst durch das Versenden dieser E-Mail nehmen Sie Kontakt mit uns auf. Die übermittelten Angaben verarbeiten wir ausschließlich zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b und f DSGVO).</p>
+    <h4>Keine Cookies, keine Tracker</h4>
+    <p>Diese Website setzt keine Cookies und bindet keine externen Dienste, Schriftarten oder Analyse-Tools ein. Es findet keine Weitergabe Ihrer Daten an Dritte zu Werbezwecken statt.</p>
+    <h4>Hosting</h4>
+    <p>Beim Aufruf der Website werden technisch notwendige Zugriffsdaten (z. B. IP-Adresse) durch den Hosting-Anbieter verarbeitet, um die Auslieferung der Seite zu ermöglichen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
+    <h4>Ihre Rechte</h4>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie ein Widerspruchsrecht. Zudem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren.</p>
+  </div>
+</div>
+
+<script>
+  // Jahr
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile-Menü
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    const open = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = open ? 'none' : 'flex';
+    burger.classList.toggle('active', !open);
+    burger.setAttribute('aria-expanded', String(!open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.style.display = 'none';
+    burger.classList.remove('active');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // FAQ
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Kontaktformular -> Validierung + mailto
+  const status = document.getElementById('formStatus');
+  const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  ['name','email','msg'].forEach(id => {
+    document.getElementById(id).addEventListener('input', e => e.target.classList.remove('invalid'));
+  });
+
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    const nameEl = document.getElementById('name');
+    const emailEl = document.getElementById('email');
+    const msgEl = document.getElementById('msg');
+    const name = nameEl.value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = emailEl.value.trim();
+    const leistung = document.getElementById('leistung').value;
+    const msg = msgEl.value.trim();
+
+    // Reset
+    [nameEl, emailEl, msgEl].forEach(el => el.classList.remove('invalid'));
+    status.className = 'form-status';
+    status.textContent = '';
+
+    // Validierung
+    const errors = [];
+    if (!name) { nameEl.classList.add('invalid'); errors.push('Name'); }
+    if (!email || !isEmail(email)) { emailEl.classList.add('invalid'); errors.push('gültige E-Mail'); }
+    if (!msg) { msgEl.classList.add('invalid'); errors.push('Nachricht'); }
+
+    if (errors.length) {
+      status.classList.add('error');
+      status.textContent = 'Bitte ergänzen Sie: ' + errors.join(', ') + '.';
+      (nameEl.classList.contains('invalid') ? nameEl :
+       emailEl.classList.contains('invalid') ? emailEl : msgEl).focus();
+      return;
+    }
+
+    const subject = 'Anfrage über die Website' + (leistung ? ' – ' + leistung : '');
+    const body =
+      'Name: ' + name + '\n' +
+      'Telefon: ' + (phone || '–') + '\n' +
+      'E-Mail: ' + email + '\n' +
+      'Gewünschte Leistung: ' + (leistung || '–') + '\n\n' +
+      'Nachricht:\n' + msg;
+
+    status.classList.add('ok');
+    status.textContent = 'Ihr E-Mail-Programm wird geöffnet …';
+
+    window.location.href = 'mailto:info@hossglanzservice.de'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+  });
+
+  // Modals
+  function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeModals(){ document.querySelectorAll('.modal-overlay').forEach(m=>m.classList.remove('open')); document.body.style.overflow=''; }
+  document.getElementById('openImpressum').addEventListener('click', ()=>openModal('impressumModal'));
+  document.getElementById('openDatenschutz').addEventListener('click', ()=>openModal('datenschutzModal'));
+  document.getElementById('openImpressum').addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal('impressumModal'); } });
+  document.getElementById('openDatenschutz').addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal('datenschutzModal'); } });
+  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click', closeModals));
+  document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click', e=>{ if(e.target===o) closeModals(); }));
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModals(); });
+</script>
+
+</body>
+</html>
